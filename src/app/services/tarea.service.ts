@@ -148,15 +148,16 @@ export class TareaService {
         tarea.fecha >= startDate && tarea.fecha <= endDate
       );
     }
-    createProject(tarea:Tarea){
-       tarea.id=this.myTareas.length;
-      this.myTareas.push(tarea);
-  }
-  
+    createProject(tarea: Tarea): void {
+      tarea.id = this.myTareas.length + 1;
+      this.myTareas.push(tarea); 
+    }
     getTareaById(tareaId: number ):Tarea {
       return this.myTareas.find(item=>item.id===tareaId)!;
     }
     
-  
+  public deleteTarea(tareaId: number): void {
+    this.myTareas = this.myTareas.filter(tarea => tarea.id !== tareaId);
+  }
   
 }

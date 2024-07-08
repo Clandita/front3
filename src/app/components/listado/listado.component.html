@@ -6,8 +6,30 @@
 
     <div class="col-md-6 listado">
       <div class="col-md-12 mb-4 mt-4" *ngFor="let tarea of filteredTareas; trackBy: trackByFn">
-        <card-tarea [tarea]="tarea"></card-tarea>
+        <div class="card">
+          <div class="card-header">
+            <!-- Título de la tarea -->
+            <h5 class="card-title">{{ tarea.titulo }}</h5>
+          </div>
+
+          <div class="card-body">
+            <!-- Descripción de la tarea -->
+            <p class="card-text">{{ tarea.descripcion }}</p>
+            <!-- Fecha de la tarea -->
+            <p class="card-text">Fecha: {{ tarea.fecha | date }}</p>
+            <!-- Prioridad de la tarea -->
+            <p class="card-text">Prioridad: {{ tarea.prioridad }}</p>
+          </div>
+
+          <div class="card-footer">
+            <!-- Botón de eliminar tarea -->
+            <button mat-icon-button class="delete-button" (click)="deleteTarea(tarea.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
+
       <div *ngIf="filteredTareas.length === 0" class="col-md-12 text-center">
         <p>No existen tareas en el rango o con el título buscado</p>
       </div>
@@ -26,8 +48,8 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
     
-            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Rango de inicio invalido</mat-error>
-            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Rango de final invalido</mat-error>
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Rango de inicio inválido</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Rango de final inválido</mat-error>
           </mat-form-field>
     
           <div class="row mt-3 d-flex align-items-end">
@@ -49,9 +71,7 @@
       <button class="col-md-3 btn btn-custom btn-circle btn-fixed" [routerLink]="['/tareas/crear']">
         <span class="icon"><i class="fas fa-plus"></i></span>
         <span class="text">Añadir Nueva Tarea</span>
-    </button>
-      </div>
-      
+      </button>
     </div>
+  </div>
 </div>
-

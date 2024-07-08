@@ -11,10 +11,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-tarea',
-  
   standalone: true,
   providers:[provideNativeDateAdapter()],
   imports: [RouterLink,CommonModule,MatFormFieldModule,ReactiveFormsModule,MatInputModule,MatButton,MatDatepickerModule,MatSliderModule,MatIconModule],
@@ -32,6 +32,8 @@ export class CreateTareaComponent {
  
     private formBuilder:FormBuilder,
     private location: Location,
+    private tareaService: TareaService,
+    private snackBar: MatSnackBar
   )
   {
 
@@ -50,18 +52,19 @@ export class CreateTareaComponent {
     })
   }
 
-  save(){
-    console.log(this.form);
-    if(this.form.invalid){
-      this.form.markAllAsTouched();
-       return;
+  save() {
+    if (this.form.valid) {
+      const tarea: Tarea = this.form.value;
+      this.form.reset(); 
+    } else {
+      this.form.markAllAsTouched(); 
     }
-  return;
   }
 
-  back() {
+  back(): void {
     this.location.back();
   }
 
+  
 
 }

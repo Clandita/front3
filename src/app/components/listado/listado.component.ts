@@ -8,12 +8,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'listado',
   standalone: true,
-  imports: [CommonModule, TareaComponent, MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, RouterLink],
+  imports: [CommonModule, TareaComponent, MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, RouterLink, MatIconModule],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './listado.component.html',
@@ -30,7 +32,7 @@ export class ListadoComponent implements OnInit {
     end: new FormControl<Date | null>(null),
   });
 
-  constructor(private tareaService: TareaService, private formBuilder: FormBuilder) {}
+  constructor(private tareaService: TareaService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.tareas = this.tareaService.getTareas();
@@ -80,6 +82,17 @@ export class ListadoComponent implements OnInit {
   
   refreshPage() {
     location.reload();
+  }
+  deleteTarea(id: number): void {
+    const confirmacion = confirm('¿Estás seguro que quieres borrar esta tarea?');
+    if (confirmacion) {
+      this.tareaService.deleteTarea(id);
+      this.snackBar.open('Tarea eliminada correctamente', 'Cerrar', {
+        duration: 2000,
+      });
+      // Actualizar la lista de tareas filtradas después de eliminar
+      this.filteredTareas = this.filteredTareas.filter(tarea => tarea.id !== id);
+    }
   }
   trackByFn(index: any, item: any) {
     return item.id;

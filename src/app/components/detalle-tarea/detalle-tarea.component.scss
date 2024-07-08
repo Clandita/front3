@@ -1,0 +1,35 @@
+.task-detail-card {
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px; 
+  }
+  
+  .task-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .detail-section {
+    padding: 10px 0;
+  }
+  
+  .detail-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .priority-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .priority-text {
+    vertical-align: middle;
+  }
+  

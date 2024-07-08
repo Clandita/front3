@@ -1,0 +1,30 @@
+<button mat-icon-button class="back-button" (click)="back()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<mat-card class="task-detail-card">
+  <mat-card-header>
+    <mat-card-title class="task-title">{{ tarea.titulo }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="detail-section">
+      <h2 class="detail-heading">Detalle de Tarea</h2>
+      <p><strong>Fecha límite:</strong> {{ tarea.fecha | date: 'dd/MM/yyyy' }}</p>
+      <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
+      <p>
+        <strong>Nivel de prioridad:</strong>
+        <span class="priority-icon">
+          <mat-icon *ngIf="tarea.prioridad === 1" style="color: green;">circle</mat-icon>
+          <mat-icon *ngIf="tarea.prioridad === 2" style="color: orange;">circle</mat-icon>
+          <mat-icon *ngIf="tarea.prioridad === 3" style="color: red;">circle</mat-icon>
+        </span>
+        <span class="priority-text">
+          {{ tarea.prioridad === 1 ? 'Baja Prioridad' : (tarea.prioridad === 2 ? 'Media Prioridad' : 'Alta Prioridad') }}
+        </span>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>
+<button mat-icon-button >
+  
+</button>

@@ -1,0 +1,31 @@
+<div class="container text-center " ><H1>Tareas por realizar</H1></div>
+<div class="container text-left "><h3>Para esta semana:</h3> </div>
+<div class="row" >
+    @for (tarea of tareas; track $index){
+        @if (!tarea.realizada){
+        @if (fechaActual(tarea.fecha)){
+            <div class="col-md-3 mb-4">
+                <card-tarea [tarea]=tarea></card-tarea>
+    
+            </div>
+        }
+        }
+        
+    }
+</div>
+<div class="container texto text-left"><h3>Para siguientes semanas:</h3></div>
+<div class="row">
+    @for (tarea of tareas; track $index){
+        @if (!tarea.realizada){
+        @if (!fechaActual(tarea.fecha)){
+            <div class="col-md-3 mb-4">
+                <card-tarea [tarea]=tarea></card-tarea>
+    
+            </div>
+        }
+        }
+        
+    }
+  </div>
+
+

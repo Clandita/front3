@@ -1,0 +1,24 @@
+<mat-card class="card-tarea " appearance="outlined">
+  <div class="priority-icons">
+    <mat-icon *ngIf="tarea.prioridad==1" style="color: green;">circle</mat-icon>
+    <mat-icon *ngIf="tarea.prioridad==2" style="color: orange;">circle</mat-icon>
+    <mat-icon *ngIf="tarea.prioridad==3" style="color: red;">circle</mat-icon>
+  </div>
+  <mat-card-header>
+    <mat-card-title>{{ tarea.titulo }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p> Fecha: {{ tarea.fecha | date: 'dd/MM/yyyy' }}</p>
+  </mat-card-content>
+  <mat-card-footer class="example-card-footer">
+    <mat-chip-set aria-label="Chihuahua traits">
+      <mat-chip [routerLink]="['/tareas',tarea.id]">Ver detalles</mat-chip>
+      <mat-chip *ngIf="!tarea.realizada" color="primary" (click)="marcarComoRealizada(tarea)">
+        <i class="fas fa-check-circle check-icon"></i>
+      </mat-chip>
+      <mat-chip *ngIf="tarea.realizada" color="primary" (click)="marcarComoNoRealizada(tarea)">
+        <i class="fas fa-check-circle check-icon-green"></i>
+      </mat-chip>
+    </mat-chip-set>
+  </mat-card-footer>
+</mat-card>

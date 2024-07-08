@@ -1,0 +1,22 @@
+.mat-toolbar{
+    background-color: #2C3E50;
+    display: flex;
+    align-self: end;
+    padding:10px 0px;
+    justify-content: end;
+    gap: 5px;
+    a{
+        color:#FFFFFF;
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: 10px;
+        padding: 10px 0px;
+    }
+    span{
+        color: white;
+        margin: 0 10px;
+    }
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }

@@ -75,7 +75,7 @@ export class CreateTareaComponent implements OnInit {
       fecha: this.form.get('fecha')?.value || null,
       descripcion: this.form.get('descripcion')?.value || '',
       prioridad: this.form.get('prioridad')?.value || '',
-      realizada: this.form.get('realizada')?.value || false
+      realizada:  false,
     };
 
     if (this.mode === 'create') {

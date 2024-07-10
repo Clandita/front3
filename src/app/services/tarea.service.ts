@@ -11,7 +11,7 @@ export class TareaService {
     {
       id:1,
       titulo:"Revisión de informe mensual",
-      fecha: new Date(2024,6,25),
+      fecha: new Date(2024,6,10),
       descripcion:"Revisar y aprobar el informe mensual de ventas.",
       prioridad:3,
       realizada:false,
@@ -19,7 +19,7 @@ export class TareaService {
     {
       id:2,
       titulo: "Llamada con cliente importante",
-      fecha: new Date(2024, 5, 24),
+      fecha: new Date(2024, 6, 12),
       descripcion: "Realizar llamada de seguimiento con el cliente VIP.",
       prioridad: 3,
       realizada: true
@@ -27,7 +27,7 @@ export class TareaService {
     {
       id: 3,
       titulo: "Preparación para la reunión de equipo",
-      fecha: new Date(2024, 5, 27),
+      fecha: new Date(2024, 6, 14),
       descripcion: "Preparar agenda y documentos para la reunión semanal del equipo.",
       prioridad: 2,
       realizada: false

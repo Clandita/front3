@@ -20,5 +20,9 @@ export const routes: Routes = [
         path:'tareas/:id',
         component: DetalleTareaComponent
     },
+    {
+        path:'tareas/update/:id',
+        component: DetalleTareaComponent
+    },
     
 ];

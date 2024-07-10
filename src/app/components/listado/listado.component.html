@@ -5,29 +5,15 @@
     </div>
 
     <div class="col-md-6 listado">
+      
       <div class="col-md-12 mb-4 mt-4" *ngFor="let tarea of filteredTareas; trackBy: trackByFn">
-        <div class="card">
-          <div class="card-header">
-            <!-- Título de la tarea -->
-            <h5 class="card-title">{{ tarea.titulo }}</h5>
-          </div>
-
-          <div class="card-body">
-            <!-- Descripción de la tarea -->
-            <p class="card-text">{{ tarea.descripcion }}</p>
-            <!-- Fecha de la tarea -->
-            <p class="card-text">Fecha: {{ tarea.fecha | date }}</p>
-            <!-- Prioridad de la tarea -->
-            <p class="card-text">Prioridad: {{ tarea.prioridad }}</p>
-          </div>
-
-          <div class="card-footer">
-            <!-- Botón de eliminar tarea -->
-            <button mat-icon-button class="delete-button" (click)="deleteTarea(tarea.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+        <div class="card-footer">
+          <button mat-icon-button class="delete-button" (click)="deleteTarea(tarea.id)">
+            <mat-icon>close</mat-icon>
+          </button>
         </div>
+        <card-tarea [tarea]="tarea"></card-tarea>
+        
       </div>
 
       <div *ngIf="filteredTareas.length === 0" class="col-md-12 text-center">

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tarea } from '../models/tarea.model';
+import { Observable, of } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
@@ -148,9 +149,26 @@ export class TareaService {
         tarea.fecha >= startDate && tarea.fecha <= endDate
       );
     }
-    createProject(tarea: Tarea): void {
-      tarea.id = this.myTareas.length + 1;
-      this.myTareas.push(tarea); 
+    createTarea(tarea: Tarea): void {
+      tarea.id = this.getNextId();
+      this.myTareas.push(tarea);
+      console.log('Tarea creada:', tarea);
+    }
+  
+    updateTarea(tarea: Tarea): void {
+      const index = this.myTareas.findIndex(t => t.id === tarea.id);
+      if (index !== -1) {
+        this.myTareas[index] = tarea;
+        console.log('Tarea actualizada:', tarea);
+      } else {
+        console.error('No se encontró la tarea con ID:', tarea.id);
+      }
+    }
+  
+    private getNextId(): number {
+      // Simulamos la generación de IDs incrementales
+      const maxId = this.myTareas.reduce((max, tarea) => tarea.id > max ? tarea.id : max, 0);
+      return maxId + 1;
     }
     getTareaById(tareaId: number ):Tarea {
       return this.myTareas.find(item=>item.id===tareaId)!;

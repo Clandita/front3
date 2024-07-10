@@ -35,6 +35,11 @@ export class DetalleTareaComponent {
   back() {
     this.location.back();
   }
+  goToEdit(): void {
+    if (this.tarea) {
+      this.router.navigate(['/tareas/update', this.tarea.id]);
+    }
+  }
 
 
 

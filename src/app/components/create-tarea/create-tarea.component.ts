@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tarea } from '../../models/tarea.model';
 import { TareaService } from '../../services/tarea.service';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-tarea',
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule],
+    MatButtonModule,
+    MatIconModule],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } 
   ]
@@ -37,7 +39,8 @@ export class CreateTareaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private tareaService: TareaService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -85,5 +88,9 @@ export class CreateTareaComponent implements OnInit {
     }
 
     this.router.navigate(['/tareas']); 
+  }
+
+  back() {
+    this.location.back();
   }
 }

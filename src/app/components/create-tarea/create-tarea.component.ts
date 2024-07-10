@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tarea } from '../../models/tarea.model';
 import { TareaService } from '../../services/tarea.service';
@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./create-tarea.component.scss'],
   standalone: true,
   imports:[CommonModule,
+    FormsModule,
     MatFormFieldModule, 
     ReactiveFormsModule, 
     MatInputModule,
@@ -83,6 +84,6 @@ export class CreateTareaComponent implements OnInit {
       this.tareaService.updateTarea(tarea);
     }
 
-    this.router.navigate(['/tareas']); // Redireccionar a la lista de tareas después de guardar
+    this.router.navigate(['/tareas']); 
   }
 }

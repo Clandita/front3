@@ -22,7 +22,7 @@ export const routes: Routes = [
     },
     {
         path:'tareas/update/:id',
-        component: DetalleTareaComponent
+        component: CreateTareaComponent
     },
     
 ];

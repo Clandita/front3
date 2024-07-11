@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./components/nav-bar/nav-bar.component";
+import { environment } from './environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { NavbarComponent } from "./components/nav-bar/nav-bar.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  public environment = environment;
   title = 'tarea';
 }
